@@ -23,6 +23,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var hint5050Button: UIButton!
     @IBOutlet weak var hintChangeQuestionButton: UIButton!
     
+    @IBOutlet weak var currentLevelLabel: UILabel!
     
     var gameSession: GameSession?
     
@@ -34,6 +35,10 @@ class GameViewController: UIViewController {
         gameSession = GameSession()
         gameSession?.gameViewDelegate = self
         setupView()
+        
+        gameSession?.level.addObserver(self, options: [.new, .initial], closure: { [weak self] (currentLevel, _) in
+            self?.currentLevelLabel.text = "Уровень: \(currentLevel)"
+        })
     }
     
     func setupView(){

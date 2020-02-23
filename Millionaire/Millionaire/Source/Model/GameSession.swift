@@ -21,7 +21,7 @@ class GameSession {
     
     var questions = [Question]()
     
-    var level = 0
+    let level:Observable<Int>
     var currentQuestionNumber = 0
     
     weak var gameViewDelegate: GameSceneDelegate?{
@@ -38,7 +38,11 @@ class GameSession {
     
     
     init() {
-        questions = Questions.shared.getQuestions()
+        if let questionUsageModeStrategy = Game.shared.questionUsageModeStrategy {
+            self.questions = questionUsageModeStrategy.getQuestions()
+        }
+        
+        self.level = Observable(0)
     }
     
     func nextQuestion() ->(Question) {
@@ -55,7 +59,7 @@ class GameSession {
         
         if currentQuestion.correctAnswer == numberRespons {
             let question = nextQuestion()
-            level += 1
+            level.value += 1
             if question.correctAnswer == 0 {
                 didEndGame(currentAnswer: numberRespons, correctAnswer: currentQuestion.correctAnswer)
             } else{
