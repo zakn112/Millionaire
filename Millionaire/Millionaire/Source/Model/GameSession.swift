@@ -21,8 +21,10 @@ class GameSession {
     
     var questions = [Question]()
     
-    var level = 0
+    let level:Observable<Int>
     var currentQuestionNumber = 0
+    
+    let hintUsageFacade:HintUsageFacade
     
     weak var gameViewDelegate: GameSceneDelegate?{
         didSet{
@@ -31,14 +33,17 @@ class GameSession {
         }
     }
     
-    var hintHelpAudience = true
-    var hintCallFriend = true
-    var hint5050 = true
-    var hintChangeQuestion = true
-    
     
     init() {
-        questions = Questions.shared.getQuestions()
+        if let questionUsageModeStrategy = Game.shared.questionUsageModeStrategy {
+            self.questions = questionUsageModeStrategy.getQuestions()
+        }
+        
+        self.level = Observable(0)
+        
+        self.hintUsageFacade = HintUsageFacade()
+        self.hintUsageFacade.gameSessionDelegate = self
+        
     }
     
     func nextQuestion() ->(Question) {
@@ -55,7 +60,7 @@ class GameSession {
         
         if currentQuestion.correctAnswer == numberRespons {
             let question = nextQuestion()
-            level += 1
+            level.value += 1
             if question.correctAnswer == 0 {
                 didEndGame(currentAnswer: numberRespons, correctAnswer: currentQuestion.correctAnswer)
             } else{
@@ -73,30 +78,22 @@ class GameSession {
     }
     
     func setHintHelpAudience() {
-        hintHelpAudience = false
-        let currentQuestion = questions[currentQuestionNumber - 1]
-        gameViewDelegate?.setHintHelpAudience(answer: currentQuestion.correctAnswer)
+        let currentQuestion = hintUsageFacade.setHintHelpAudience()
+        gameViewDelegate?.setHintHelpAudience(answer: currentQuestion)
     }
     
     func setHintCallFriend() {
-        hintCallFriend = false
-        let currentQuestion = questions[currentQuestionNumber - 1]
-        gameViewDelegate?.setHintCallFriend(answer: currentQuestion.correctAnswer)
+        let currentQuestion = hintUsageFacade.setHintCallFriend()
+        gameViewDelegate?.setHintCallFriend(answer: currentQuestion)
     }
     
     func setHint5050() {
-        hint5050 = false
-        let currentQuestion = questions[currentQuestionNumber - 1]
-        
-        let rand1 = Int(arc4random_uniform(UInt32(3)) + 1) - 1
-        let rand2 = Int(arc4random_uniform(UInt32(2)) + 1) - 1
-        var answersNumbers:[Int] = [1,2,3,4]
-        answersNumbers.remove(at: currentQuestion.correctAnswer - 1)
-        gameViewDelegate?.setHint5050(answer1: answersNumbers[rand1], answer2: answersNumbers[rand2])
+        let currentQuestion = hintUsageFacade.setHint5050()
+        gameViewDelegate?.setHint5050(answer1: currentQuestion.0, answer2: currentQuestion.1)
     }
     
     func setHintChangeQuestion() {
-        let question = nextQuestion()
+        let question =  hintUsageFacade.setHintChangeQuestion()
         gameViewDelegate?.setHintChangeQuestion(question: question)
     }
     

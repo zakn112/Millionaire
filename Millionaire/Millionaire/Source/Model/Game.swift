@@ -8,12 +8,33 @@
 
 import Foundation
 
+enum QuestionUsageMode{
+    case сonsistently
+    case randomly
+}
+
 class Game {
     static let shared = Game()
     private let resultsCaretaker = ResultsCaretaker()
     
+    var questionUsageModeStrategy:QuestionUsageModeStrategy?
+    var questionUsageMode:QuestionUsageMode? {
+        didSet{
+            switch questionUsageMode {
+            case .randomly:
+                self.questionUsageModeStrategy = QuestionUsageModeStrategyRandomly()
+            case .сonsistently:
+                self.questionUsageModeStrategy = QuestionUsageModeStrategyConsistently()
+            default:
+                self.questionUsageModeStrategy = QuestionUsageModeStrategyConsistently()
+            }
+        }
+    }
+    
     private init() {
         self.results = self.resultsCaretaker.retrieveRecords()
+        self.questionUsageMode = .сonsistently
+        self.questionUsageModeStrategy = QuestionUsageModeStrategyConsistently()
     }
     
     var results = [ResultGame]()
