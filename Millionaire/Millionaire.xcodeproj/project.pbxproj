@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3364527923FAFEBF005DD512 /* ResultsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364527823FAFEBF005DD512 /* ResultsCaretaker.swift */; };
+		33295EC32403C68300CEB378 /* HintFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33295EC22403C68300CEB378 /* HintFacade.swift */; };
+		3341794824027AF80054E7B9 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341794724027AF80054E7B9 /* AddQuestionsViewController.swift */; };
+		3341794A24027BD00054E7B9 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341794924027BD00054E7B9 /* QuestionsTableViewCell.swift */; };
+		3364527923FAFEBF005DD512 /* Caretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364527823FAFEBF005DD512 /* Caretaker.swift */; };
 		339CBBEE24025304007EC44A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339CBBED24025304007EC44A /* SettingsViewController.swift */; };
 		339CBBF124025ADF007EC44A /* QuestionUsageModeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339CBBF024025ADF007EC44A /* QuestionUsageModeStrategy.swift */; };
 		339CBBF324025B93007EC44A /* QuestionUsageModeStrategyRandomly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339CBBF224025B93007EC44A /* QuestionUsageModeStrategyRandomly.swift */; };
@@ -47,7 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3364527823FAFEBF005DD512 /* ResultsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCaretaker.swift; sourceTree = "<group>"; };
+		33295EC22403C68300CEB378 /* HintFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintFacade.swift; sourceTree = "<group>"; };
+		3341794724027AF80054E7B9 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
+		3341794924027BD00054E7B9 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		3364527823FAFEBF005DD512 /* Caretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caretaker.swift; sourceTree = "<group>"; };
 		339CBBED24025304007EC44A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		339CBBF024025ADF007EC44A /* QuestionUsageModeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionUsageModeStrategy.swift; sourceTree = "<group>"; };
 		339CBBF224025B93007EC44A /* QuestionUsageModeStrategyRandomly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionUsageModeStrategyRandomly.swift; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 				33A770C423F7C997003F647F /* GameViewController.swift */,
 				33A770CF23F85A57003F647F /* ResultsTableViewController.swift */,
 				339CBBED24025304007EC44A /* SettingsViewController.swift */,
+				3341794724027AF80054E7B9 /* AddQuestionsViewController.swift */,
+				3341794924027BD00054E7B9 /* QuestionsTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,7 +215,8 @@
 				33A770C723F7D2FE003F647F /* Questions.swift */,
 				33A770C923F7D560003F647F /* GameSession.swift */,
 				33A770CD23F83722003F647F /* Game.swift */,
-				3364527823FAFEBF005DD512 /* ResultsCaretaker.swift */,
+				3364527823FAFEBF005DD512 /* Caretaker.swift */,
+				33295EC22403C68300CEB378 /* HintFacade.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,16 +354,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A770D023F85A57003F647F /* ResultsTableViewController.swift in Sources */,
-				3364527923FAFEBF005DD512 /* ResultsCaretaker.swift in Sources */,
+				3364527923FAFEBF005DD512 /* Caretaker.swift in Sources */,
 				33A7709623F7C40F003F647F /* MainViewController.swift in Sources */,
 				339CBBEE24025304007EC44A /* SettingsViewController.swift in Sources */,
 				33A770C523F7C997003F647F /* GameViewController.swift in Sources */,
+				33295EC32403C68300CEB378 /* HintFacade.swift in Sources */,
+				3341794A24027BD00054E7B9 /* QuestionsTableViewCell.swift in Sources */,
 				339CBBF82402638F007EC44A /* Observer.swift in Sources */,
 				339CBBF324025B93007EC44A /* QuestionUsageModeStrategyRandomly.swift in Sources */,
 				339CBBF124025ADF007EC44A /* QuestionUsageModeStrategy.swift in Sources */,
 				33A770CE23F83722003F647F /* Game.swift in Sources */,
 				33A7709223F7C40F003F647F /* AppDelegate.swift in Sources */,
 				33A770C823F7D2FE003F647F /* Questions.swift in Sources */,
+				3341794824027AF80054E7B9 /* AddQuestionsViewController.swift in Sources */,
 				339CBBF524025BC3007EC44A /* QuestionUsageModeStrategyConsistently.swift in Sources */,
 				33A770CA23F7D560003F647F /* GameSession.swift in Sources */,
 				33A7709423F7C40F003F647F /* SceneDelegate.swift in Sources */,

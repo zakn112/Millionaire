@@ -92,22 +92,22 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func hintHelpAudienceButtonPress(_ sender: Any) {
-        guard let gameSession = gameSession, gameSession.hintHelpAudience else { return }
+        guard let gameSession = gameSession else { return }
         gameSession.setHintHelpAudience()
     }
     
     @IBAction func hintCallFriendButtonPress(_ sender: Any) {
-        guard let gameSession = gameSession, gameSession.hintCallFriend else { return }
+        guard let gameSession = gameSession else { return }
         gameSession.setHintCallFriend()
     }
     
     @IBAction func hint5050ButtonPress(_ sender: Any) {
-        guard let gameSession = gameSession, gameSession.hint5050 else { return }
+        guard let gameSession = gameSession else { return }
         gameSession.setHint5050()
     }
     
     @IBAction func hintChangeQuestionButtonPress(_ sender: Any) {
-        guard let gameSession = gameSession, gameSession.hintChangeQuestion else { return }
+        guard let gameSession = gameSession else { return }
         gameSession.setHintChangeQuestion()
     }
     
@@ -169,10 +169,10 @@ extension GameViewController: GameSceneDelegate {
     
     func setHintHelpAudience(answer: Int) {
         switch answer {
-        case 1: answer1Button.backgroundColor = UIColor.yellow
-        case 2: answer2Button.backgroundColor = UIColor.yellow
-        case 3: answer3Button.backgroundColor = UIColor.yellow
-        case 4: answer4Button.backgroundColor = UIColor.yellow
+        case 1: answer1Button.backgroundColor = UIColor.orange
+        case 2: answer2Button.backgroundColor = UIColor.orange
+        case 3: answer3Button.backgroundColor = UIColor.orange
+        case 4: answer4Button.backgroundColor = UIColor.orange
         default:
             return
         }
@@ -183,10 +183,10 @@ extension GameViewController: GameSceneDelegate {
     
     func setHintCallFriend(answer: Int) {
         switch answer {
-        case 1: answer1Button.backgroundColor = UIColor.yellow
-        case 2: answer2Button.backgroundColor = UIColor.yellow
-        case 3: answer3Button.backgroundColor = UIColor.yellow
-        case 4: answer4Button.backgroundColor = UIColor.yellow
+        case 1: answer1Button.backgroundColor = UIColor.orange
+        case 2: answer2Button.backgroundColor = UIColor.orange
+        case 3: answer3Button.backgroundColor = UIColor.orange
+        case 4: answer4Button.backgroundColor = UIColor.orange
         default:
             return
         }
@@ -219,7 +219,9 @@ extension GameViewController: GameSceneDelegate {
     
     func setHintChangeQuestion(question: Question) {
         hintChangeQuestionButton.backgroundColor = UIColor.gray
-        reloadQuestion(question: question)
+        if question.correctAnswer != 0 {
+            reloadQuestion(question: question)
+        }
     }
     
 }
